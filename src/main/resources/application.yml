@@ -1,0 +1,76 @@
+server:
+  port: 8080
+  undertow:
+    io-threads: 8
+    worker-threads: 256
+    direct-buffers: true
+    buffer-size: 1024
+    accesslog:
+      enabled: true
+      rotate: true
+      dir: /apprun/logs/${spring.application.name}/access
+  ssl:
+    enabled: true
+    key-store: classpath:bpzlearn.jks
+    key-store-password: Mm_1989321
+    key-store-type: JKS
+    client-auth: need
+    trust-store-type: JKS
+    trust-store-provider: SUN
+spring:
+  application:
+    name: rabbitmq
+  rabbitmq:
+    host: 123.206.195.80
+    port: 5672
+    username: learn
+    password: Mm_1989321
+    virtual-host: learn
+api:
+  rabbit:
+    address: https://bpzlearn.com:8080
+#Feign Config
+feign:
+  hystrix:
+    enabled: true
+  httpclient:
+    enabled: false
+    disable-ssl-validation: false
+  okhttp:
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 1000
+        readTimeout: 500
+logging:
+  level:
+    root: DEBUG
+  file: /apprun/logs/${spring.application.name}/business/${spring.application.name}.log
+  file.max-history: 30
+  file.max-size: 300MB
+  pattern:
+    file: '[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %logger{0}:%m%n'
+    console: '[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %logger{0}:%m%n'
+management:
+  server:
+    port: 8888
+  endpoint:
+    beans:
+      enabled: true
+    health:
+      enabled: true
+    httptrace:
+      enabled: true
+    info:
+      enabled: true
+    loggers:
+      enabled: true
+    metrics:
+      enabled: true
+    threaddump:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: beans,health,httptrace,info,loggers,metrics,threaddump
