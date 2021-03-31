@@ -30,7 +30,7 @@
         <commons-codec.version>1.12</commons-codec.version>
         <commons-pool2.version>2.6.2</commons-pool2.version>
         <caffeine.version>2.7.0</caffeine.version>
-        <guava.version>28.0-jre</guava.version>
+        <guava.version>29.0-jre</guava.version>
         <openfeign.version>10.1.0</openfeign.version>
     </properties>
 
